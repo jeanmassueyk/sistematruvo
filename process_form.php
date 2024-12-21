@@ -41,6 +41,9 @@ $data = date('d-m-y');
 // Formata a hora no formato HH:MM:SS
 $hora = date('H:i:s');
 
+
+
+
 // Monta o payload JSON a ser enviado ao webhook
 $payload = json_encode([
     'nomeCliente' => $nomeCliente,
