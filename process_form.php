@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Verifica se o formulário foi enviado via POST UP
+// Verifica se o formulário foi enviado via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Captura os dados enviados pelo formulário
     $nomeCliente = htmlspecialchars($_POST['nomeCliente']);
@@ -43,20 +43,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'Content-Type: application/json',
         'Content-Length: ' . strlen($payload)
     ]);
- 
-
-curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
 
     // Envia os dados e captura a resposta
     $response = curl_exec($ch);
 
     // Verifica erros de cURL
+    echo '<div class="container mt-5">';
     if (curl_errno($ch)) {
-        echo "<div style='color:red; text-align:center; margin-top:20px;'>
+        // Exibe mensagem de erro com Bootstrap
+        echo "<div class='alert alert-danger' role='alert'>
                 Erro ao enviar webhook: " . curl_error($ch) . "
               </div>";
     } else {
-        echo "<div style='color:green; text-align:center; margin-top:20px; font-size:18px;'>
+        // Exibe mensagem de sucesso com Bootstrap
+        echo "<div class='alert alert-success' role='alert'>
                 Mensagem enviada com sucesso! Você será redirecionado em 5 segundos...
               </div>";
         // Redirecionamento automático após 5 segundos
@@ -66,6 +67,7 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
                 }, 5000);
               </script>";
     }
+    echo '</div>';
 
     // Fecha a conexão cURL
     curl_close($ch);
