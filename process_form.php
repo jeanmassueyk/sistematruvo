@@ -22,33 +22,35 @@
         // Verifica se o formulário foi enviado via POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Captura os dados enviados pelo formulário
-            $nomeCliente = htmlspecialchars($_POST['nomeCliente']);
-            $endereco = htmlspecialchars($_POST['endereco']);
-            $complemento = htmlspecialchars($_POST['complemento']);
-            $numeroPedido = htmlspecialchars($_POST['numeroPedido']);
-            $telefoneCliente = htmlspecialchars($_POST['telefoneCliente']);
-            $estabelecimento = htmlspecialchars($_POST['estabelecimento']);
-            $usuario = htmlspecialchars($_POST['usuario']);
-            $areaColar = htmlspecialchars($_POST['areaColar']);
+$nomeCliente = htmlspecialchars($_POST['nomeCliente']);
+$endereco = htmlspecialchars($_POST['endereco']);
+$complemento = htmlspecialchars($_POST['complemento']);
+$numeroPedido = htmlspecialchars($_POST['numeroPedido']);
+$telefoneCliente = htmlspecialchars($_POST['telefoneCliente']);
+$estabelecimento = htmlspecialchars($_POST['estabelecimento']);
+$usuario = htmlspecialchars($_POST['usuario']);
+$areaColar = htmlspecialchars($_POST['areaColar']);
 
-            // Configura o fuso horário para UTC-3
-            date_default_timezone_set('America/Sao_Paulo');
 
-            // Formata a data/hora no formato DD-MM-YY HH:MM:SS
-            $dataHora = date('d-m-y H:i:s');
+// Configura o fuso horário para UTC-3
+date_default_timezone_set('America/Sao_Paulo');
 
-            // Monta o payload JSON a ser enviado ao webhook
-            $payload = json_encode([
-                'nomeCliente' => $nomeCliente,
-                'endereco' => $endereco,
-                'complemento' => $complemento,
-                'numeroPedido' => $numeroPedido,
-                'telefoneCliente' => "+55" . $telefoneCliente, // Prefixo do telefone
-                'estabelecimento' => $estabelecimento,
-                'usuario' => $usuario,
-                'areaColar' => $areaColar,
-                'dataHora' => $dataHora // Adiciona a data/hora formatada
-            ]);
+// Formata a data/hora no formato DD-MM-YY HH:MM:SS
+$dataHora = date('d-m-y H:i:s');
+
+// Monta o payload JSON a ser enviado ao webhook
+$payload = json_encode([
+    'nomeCliente' => $nomeCliente,
+    'endereco' => $endereco,
+    'complemento' => $complemento,
+    'numeroPedido' => $numeroPedido,
+    'telefoneCliente' => "+55" . $telefoneCliente, // Prefixo do telefone
+    'estabelecimento' => $estabelecimento,
+    'usuario' => $usuario,
+    'areaColar' => $areaColar,
+    'dataHora' => $dataHora, // Adiciona a data/hora formatada
+
+]);
 
             // Inicializa o cURL
             $ch = curl_init($webhookUrl);
