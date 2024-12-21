@@ -35,8 +35,11 @@ $areaColar = htmlspecialchars($_POST['areaColar']);
 // Configura o fuso horário para UTC-3
 date_default_timezone_set('America/Sao_Paulo');
 
-// Formata a data/hora no formato DD-MM-YY HH:MM:SS
-$dataHora = date('d-m-y H:i:s');
+// Formata a data no formato DD-MM-YY
+$data = date('d-m-y');
+
+// Formata a hora no formato HH:MM:SS
+$hora = date('H:i:s');
 
 // Monta o payload JSON a ser enviado ao webhook
 $payload = json_encode([
@@ -48,8 +51,8 @@ $payload = json_encode([
     'estabelecimento' => $estabelecimento,
     'usuario' => $usuario,
     'areaColar' => $areaColar,
-    'dataHora' => $dataHora, // Adiciona a data/hora formatada
-
+    'data' => $data, // Adiciona a data formatada
+    'hora' => $hora  // Adiciona a hora formatada
 ]);
 
             // Inicializa o cURL
