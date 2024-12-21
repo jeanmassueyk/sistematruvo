@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <?php
         // Configuração do endpoint do webhook
-        $webhookUrl = 'https://n8n.jeanmassueyk.site/webhook-test/form'; // Substitua pelo endpoint correto
+        $webhookUrl = 'https://n8n.jeanmassueyk.site/webhook/form'; // Substitua pelo endpoint correto
 
         // Função para redirecionar para a página inicial ao dar refresh
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -31,6 +31,12 @@
             $usuario = htmlspecialchars($_POST['usuario']);
             $areaColar = htmlspecialchars($_POST['areaColar']);
 
+            // Configura o fuso horário para UTC-3
+            date_default_timezone_set('America/Sao_Paulo');
+
+            // Formata a data/hora no formato DD-MM-YY HH:MM:SS
+            $dataHora = date('d-m-y H:i:s');
+
             // Monta o payload JSON a ser enviado ao webhook
             $payload = json_encode([
                 'nomeCliente' => $nomeCliente,
@@ -41,7 +47,7 @@
                 'estabelecimento' => $estabelecimento,
                 'usuario' => $usuario,
                 'areaColar' => $areaColar,
-                'dataEnvio' => date('Y-m-d H:i:s') // Timestamp do envio
+                'dataHora' => $dataHora // Adiciona a data/hora formatada
             ]);
 
             // Inicializa o cURL
