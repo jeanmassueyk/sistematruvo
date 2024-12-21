@@ -11,7 +11,7 @@
     <div class="container mt-5">
         <?php
         // Configuração do endpoint do webhook
-        $webhookUrl = 'https://n8n.jeanmassueyk.site/webhook/form'; // Substitua pelo endpoint correto
+        $webhookUrl = 'https://n8n.jeanmassueyk.site/webhook-test/form'; // Substitua pelo endpoint correto
 
         // Função para redirecionar para a página inicial ao dar refresh
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
