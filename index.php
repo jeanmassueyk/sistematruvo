@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="numeroPedido" class="form-label">Número do Pedido </label>
-                    <input type="text" class="form-control inputstyle" id="numeroPedido" name="numeroPedido" required>
+                    <input type="text" class="form-control inputstyle" id="numeroPedido" name="numeroPedido" required oninput="this.value = this.value.replace(/[^0-9]/g, '')">
                 </div>
             </div>
 
@@ -111,11 +111,6 @@
                         <option value="Refinatto">Refinatto</option>
                         <option value="Sesconecttos">Sesconecttos</option>
                         <option value="Tokthe Sushi">Tokthe Sushi</option>
-
-
-
-                        
-                        
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -146,5 +141,15 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Máscara para o campo Telefone do Cliente
+        const telefoneInput = document.getElementById('telefoneCliente');
+        telefoneInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+            value = value.replace(/^(\d{2})(\d)/g, '($1) $2'); // Adiciona parênteses no DDD
+            value = value.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o hífen
+            e.target.value = value;
+        });
+    </script>
 </body>
 </html>
