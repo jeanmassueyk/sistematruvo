@@ -19,6 +19,8 @@
             margin: 0 auto;
             max-width: 150px; /* Ajuste o tamanho da logo conforme necessário */
             height: auto;
+            user-drag: none; /* Impede o arrastar da imagem */
+            pointer-events: none; /* Impede interações com a imagem */
         }
         /* Estilo para a classe inputstyle */
         .inputstyle {
@@ -56,7 +58,7 @@
     <div class="container mt-5">
         <!-- Logo -->
         <div class="text-center mb-4">
-            <img src="https://sistemas.jeanmassueyk.com.br/GitTest/imgs/truvologo.png" alt="Logo" class="logo">
+            <img src="https://sistemas.jeanmassueyk.com.br/GitTest/imgs/truvologo.png" alt="Logo" class="logo" oncontextmenu="return false;">
         </div>
 
         <h1 class="text-center mb-4">Envio de Mensagem Automática What's App</h1>
