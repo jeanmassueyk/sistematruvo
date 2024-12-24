@@ -113,6 +113,7 @@
                         <option value="Refinatto">Refinatto</option>
                         <option value="Sesconecttos">Sesconecttos</option>
                         <option value="Tokthe Sushi">Tokthe Sushi</option>
+                        <option value="Tarumâ">Tarumâ</option>
                     </select>
                 </div>
                 <div class="col-md-4">
